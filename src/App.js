@@ -1,3 +1,5 @@
+
+
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
@@ -7,11 +9,12 @@ import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
 
 
+
 function App() {
   return (
     <div>
-      <Navbar collapseOnSelect expand="lg" bg="light" className="justify-content-between" sticky="top" style={{boxShadow:'0px 0px 7px 0px black'}}>
-          <Navbar.Brand href="home">
+      <Navbar collapseOnSelect expand="lg" bg="light" className="justify-content-between navbar" sticky="top" style={{boxShadow:'0px 0px 7px 0px black', fontFamily: 'Poiret One, cursive', fontSize: '1.5em'}}>
+          <Navbar.Brand href="home" style={{fontSize: '1.75em', color: 'green'}}>
             Rare Plants
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -38,21 +41,25 @@ function App() {
         <div>
           <div style={{ 
             height:'760px', 
-            backgroundImage:`url(/woodpannel2.jpeg)`,
+            backgroundImage:`url(/tropicalplants2.jpeg)`,
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'cover',
             textAlign: 'center',
             color: 'white',
-            background: 
-              `repeating-radial-gradient(
-                circle at 0 0, 
-                #FFEBCD,
-                #DEB887 90px
-              )`
+            // background: 
+            //   `repeating-radial-gradient(
+            //     circle at 0 0, 
+            //     #FFEBCD,
+            //     #DEB887 90px
+            //   )`
+            fontFamily: 'Poiret One, cursive'
           }}>
 
           Plants Are Cool
           </div>
+          <Container style={{backgroundColor: 'rgb(248,249,250)', height: '760px'}}>
+          hello
+          </Container>
         </div>
     </div>
   );

@@ -6,6 +6,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
+import Jumbotron from 'react-bootstrap/Jumbotron'
 import Button from 'react-bootstrap/Button';
 
 
@@ -39,8 +40,8 @@ function App() {
           </Navbar.Collapse>
         </Navbar>
         <div>
-          <div style={{ 
-            height:'760px', 
+          <Container fluid style={{ 
+            height:'800px', 
             backgroundImage:`url(/tropicalplants2.jpeg)`,
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'cover',
@@ -52,11 +53,31 @@ function App() {
             //     #FFEBCD,
             //     #DEB887 90px
             //   )`
-            fontFamily: 'Poiret One, cursive'
+            fontFamily: 'Poiret One, cursive',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
           }}>
 
-          Plants Are Cool
-          </div>
+            <Jumbotron style={{
+              fontFamily: 'Poiret One, cursive', 
+              color: 'black', 
+              background: 'rgba(248,249,250,0.6)', 
+              width: '100%',
+            }}>
+              <h1 style={{fontSize:'4em'}}>All the plants of tommorrow are the seeds of today.</h1>
+              <Container style={{display:'flex', marginTop: '5%', fontSize: '1.5em'}}>
+                <Container>
+                  <p>The Rare Plants Seed Exchange connects you to all kinds of unique seeds</p>
+                  <Button>Seed Exchange</Button>
+                </Container>
+                <Container>
+                  <p>The Green Thumb Planter Box is the easiest way to start growing your very own unique plants</p>
+                  <Button>Learn More</Button>
+                </Container>
+              </Container>
+            </Jumbotron>
+          </Container>
           <Container style={{backgroundColor: 'rgb(248,249,250)', height: '760px'}}>
           hello
           </Container>

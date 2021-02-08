@@ -50,11 +50,16 @@ class LoginRegister extends React.Component {
 				}
 
 				</Modal.Header>
-				<Modal.Body>
+				<Modal.Body style={{
+					backgroundImage:`url(/plantborder7.jpeg)`,
+					backgroundRepeat: 'no-repeat',
+					backgroundSize: 'cover',
+					padding: '8%'
+				}}>
 					{
 						this.state.type === 'login'
 						?
-						<Form>
+						<Form style={{color: 'black', fontSize: '1.4em'}}>
 							<Form.Group controlId="login">
 								<Form.Label>Login</Form.Label>
 								<Form.Control size="lg" type="email" placeholder="Enter email or username" />
@@ -63,12 +68,12 @@ class LoginRegister extends React.Component {
 								<Form.Label>Password</Form.Label>
 								<Form.Control size="lg" type="password" placeholder="Enter password" />
 							</Form.Group>
-							<Button size="lg" variant="primary" type="submit">
+							<Button size="sm" variant="primary" type="submit">
 								Log in
 							</Button>
 						</Form>
 						:
-						<Form>
+						<Form style={{color: 'black', fontSize: '1.4em'}}>
 							<Form.Group controlId="registerEmail">
 								<Form.Label>Email</Form.Label>
 								<Form.Control size="lg" type="email" placeholder="Enter email" />
@@ -85,7 +90,7 @@ class LoginRegister extends React.Component {
 								<Form.Label>Confirm Password</Form.Label>
 								<Form.Control size="lg" type="password" placeholder="Enter password again" />
 							</Form.Group>
-							<Button size="lg" variant="primary" type="submit">
+							<Button size="sm" variant="primary" type="submit">
 								Create Account
 							</Button>
 						</Form>

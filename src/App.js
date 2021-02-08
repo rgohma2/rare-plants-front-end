@@ -14,10 +14,15 @@ import Button from 'react-bootstrap/Button';
 import LoginRegister from './LoginRegister'
 
 const HoverText = styled.span`
-  color: #000;
+  color: rgba(44, 62, 80, 1);
+  background: linear-gradient(to right, rgba(203,113,138, 0.4) 50%, transparent 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  transition: all .3s ease-out;
   :hover {
-    color: darkgreen;
     cursor: pointer;
+    background-position: left bottom;
+    margin: .4%;
   }
 `
 
@@ -45,7 +50,7 @@ class App extends React.Component {
     return (
       <div>
         <Navbar collapseOnSelect expand="lg" bg="light" className="justify-content-between navbar" sticky="top" style={{boxShadow:'0px 0px 7px 0px black', fontFamily: 'Poiret One, cursive', fontSize: '1.5em'}}>
-            <Navbar.Brand href="home" style={{fontSize: '1.75em', color: 'green'}}>
+            <Navbar.Brand href="home" style={{fontSize: '1.75em', color: 'darkgreen'}}>
               Rare Plants
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -81,11 +86,11 @@ class App extends React.Component {
             }
 
             <Container fluid style={{ 
-              height:'800px', 
-              backgroundImage:`url(/tropicalplants2.jpeg)`,
+              height:'1800px', 
+              backgroundImage:`url(/plantborder7.jpeg)`,
               backgroundRepeat: 'no-repeat',
               backgroundSize: 'cover',
-              textAlign: 'center',
+              textAlign: 'left',
               color: 'white',
               // background: 
               //   `repeating-radial-gradient(
@@ -95,18 +100,24 @@ class App extends React.Component {
               //   )`
               fontFamily: 'Poiret One, cursive',
               display: 'flex',
-              alignItems: 'center',
+              alignItems: 'start',
               justifyContent: 'center'
             }}>
 
               <Jumbotron style={{
                 fontFamily: 'Poiret One, cursive', 
-                color: 'black', 
-                background: 'rgba(248,249,250,0.6)', 
-                width: '75%'
+                color: 'rgba(44, 62, 80, 1)', 
+                background: 'transparent', 
+                width: '85%',
+                marginTop:'14.5%',
+                marginLeft: '2%'
               }}>
                 <h1 style={{fontSize:'4em'}}>All the Plants of Tommorrow <br/> Are the Seeds of Today</h1>
-                <p style={{fontSize: '2em'}}> Become a <HoverText style={{textDecoration: 'underline',}}> Green Thumb Planter Box</HoverText> member to start your journey. </p>
+                <p style={{fontSize: '2em'}}> Become a <HoverText style={{textDecoration: 'underline',}}> Green Thumb Planter Box 
+                <img style={{marginLeft: '0%', width: '5%', height: '5%'}} src='/arrow4.png'></img>
+                </HoverText> 
+               <br></br> member to start your journey. </p>
+
               </Jumbotron>
             </Container>
                 <Container style={{display:'flex', marginTop: '5%', fontSize: '1.5em', color: 'black'}}>

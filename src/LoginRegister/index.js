@@ -32,7 +32,8 @@ class LoginRegister extends React.Component {
 		registerEmail: "",
 		registerUsername: "",
 		registerPassword1:"",
-		registerPassword2:""
+		registerPassword2:"",
+		badSubmission: false
 	})
 
 	resetState = () => {
@@ -77,7 +78,37 @@ class LoginRegister extends React.Component {
 
 	}
 
-	Component
+	handleSubmit = (e) => {
+		e.preventDefault()
+		if (this.state.type === 'register') {
+			if (this.state.validEmail === true &&
+				this.state.passwordsMatch === true &&
+				this.state.registerUsername !== "") {
+					this.setState({
+						badSubmission: false
+					})
+					this.props.loginRegister(this.state)
+					this.props.toggleModal()
+					this.resetState()
+			} else {
+				this.setState({
+					badSubmission: true
+				})
+			}
+		} else if (this.state.type === 'login') {
+			if (this.state.login !== "" && 
+				this.state.loginPassword !== "") {
+					this.props.loginRegister(this.state)
+					this.props.toggleModal()
+					this.resetState()
+			} else {
+				this.setState({
+					badSubmission: true
+				})
+			} 
+		}
+	}
+
 
 
 
@@ -105,15 +136,24 @@ class LoginRegister extends React.Component {
 					backgroundImage:`url(/plantborder7.jpeg)`,
 					backgroundRepeat: 'no-repeat',
 					backgroundSize: 'cover',
-					padding: '8%',
+					padding: '8%'
 				}}>
 					{
 						this.state.type === 'login'
 						?
-						<Form style={{color: 'rgba(44, 62, 80, 1)', fontSize: '1.4em'}}>
+						<Form onSubmit={this.handleSubmit} style={{color: 'rgba(44, 62, 80, 1)', fontSize: '1.4em'}}>
+							{
+									this.state.badSubmission === true
+									?
+									<Form.Text style={{textAlign: 'center', color: 'red', backgroundColor: 'rgba(248,249,250,0.6)'}}>
+								    	Please fill out all required fields.
+							    	</Form.Text>
+							    	:
+							    	null
+							}
 							<Form.Group controlId="login">
 								<Form.Label>Login</Form.Label>
-								<Form.Control value={this.state.login} onChange={this.handleChange} size="lg" type="email" placeholder="Enter email or username" />
+								<Form.Control value={this.state.login} onChange={this.handleChange} size="lg" type="text" placeholder="Enter email or username" />
 							</Form.Group>
 							<Form.Group controlId="loginPassword">
 								<Form.Label>Password</Form.Label>
@@ -124,10 +164,19 @@ class LoginRegister extends React.Component {
 							</Button>
 						</Form>
 						:
-						<Form style={{color: 'black', fontSize: '1.4em'}}>
+						<Form onSubmit={this.handleSubmit} style={{color: 'black', fontSize: '1.4em'}}>
+							{
+									this.state.badSubmission === true
+									?
+									<Form.Text style={{textAlign: 'center', color: 'red', backgroundColor: 'rgba(248,249,250,0.6)'}}>
+								    	Please fill out all required fields.
+							    	</Form.Text>
+							    	:
+							    	null
+							}
 							<Form.Group controlId="registerEmail">
 								<Form.Label>Email</Form.Label>
-								<Form.Control value={this.state.registerEmail} onChange={this.handleChange} size="lg" type="email" placeholder="Enter email" />
+								<Form.Control value={this.state.registerEmail} onChange={this.handleChange} size="lg" type="text" placeholder="Enter email" />
 								{
 									this.state.validEmail === false
 									?
@@ -140,7 +189,7 @@ class LoginRegister extends React.Component {
 							</Form.Group>
 							<Form.Group controlId="registerUsername">
 								<Form.Label>Username</Form.Label>
-								<Form.Control value={this.state.registerUsername} onChange={this.handleChange} size="lg" type="email" placeholder="Enter username" />
+								<Form.Control value={this.state.registerUsername} onChange={this.handleChange} size="lg" type="text" placeholder="Enter username" />
 							</Form.Group>
 							<Form.Group controlId="registerPassword1">
 								<Form.Label>Password</Form.Label>

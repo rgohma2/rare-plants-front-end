@@ -46,6 +46,30 @@ class App extends React.Component {
     })
   }
 
+  loginRegister = async (formData) => {
+    const type = formData.type 
+    const url = process.env.REACT_APP_API_URL + '/api/v1/users/' + type
+    console.log(formData, url);
+    // if (type === 'register') {
+    //   const registerInfo = {
+    //     email: formData.registerEmail,
+    //     username: formData.registerUsername,
+    //     password: formData.registerPassword1
+    //   }
+    //   const response = await fetch(url, {
+    //       credentials: 'include',
+    //       method: 'POST',
+    //       body: JSON.stringify(registerInfo),
+    //       headers: {
+    //         'Content-Type': 'application/json'
+    //       }
+    //   })
+
+    //   const registerJSON = await response.json()
+    //   console.log(registerJSON)
+    // }
+  }
+
   render(){
     return (
       <div>
@@ -80,6 +104,7 @@ class App extends React.Component {
               ?
               <LoginRegister
               toggleModal={this.toggleModal}
+              loginRegister={this.loginRegister}
               />
               :
               null

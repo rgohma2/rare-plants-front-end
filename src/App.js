@@ -103,10 +103,10 @@ class App extends React.Component {
                 fontFamily: 'Poiret One, cursive', 
                 color: 'black', 
                 background: 'rgba(248,249,250,0.6)', 
-                width: '95%'
+                width: '75%'
               }}>
                 <h1 style={{fontSize:'4em'}}>All the Plants of Tommorrow <br/> Are the Seeds of Today</h1>
-                <p style={{fontSize: '2em'}}> Become a <HoverText style={{textDecoration: 'underline',}}> Green Thumb Planter Box</HoverText> member to start your journey today. </p>
+                <p style={{fontSize: '2em'}}> Become a <HoverText style={{textDecoration: 'underline',}}> Green Thumb Planter Box</HoverText> member to start your journey. </p>
               </Jumbotron>
             </Container>
                 <Container style={{display:'flex', marginTop: '5%', fontSize: '1.5em', color: 'black'}}>

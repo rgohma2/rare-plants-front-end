@@ -20,16 +20,40 @@ class LoginRegister extends React.Component {
 
 		super(props)
 
-		this.state = {
-			type: 'login'
-		}
+		this.state = this.getInitialState()
+	}
+
+	getInitialState = () => ({
+		type: 'login',
+		login:"",
+		loginPassword:"",
+		registerEmail: "",
+		registerUsername: "",
+		registerPassword1:"",
+		registerPassword2:""
+	})
+
+	resetState = () => {
+		this.setState(this.getInitialState())
 	}
 
 	toggleFormType = () => {
+		const type = this.state.type
+		this.resetState()
 		this.setState({
-			type: this.state.type === 'login' ? 'register' : 'login'
+			type: type === 'login' ? 'register' : 'login'
 		})
 	}
+
+	handleChange = (e) => {
+		this.setState({
+			[e.target.id]: e.target.value
+		})
+	}
+
+	Component
+
+
 
 	render() {
 		return(
@@ -38,6 +62,7 @@ class LoginRegister extends React.Component {
 			onHide={this.props.toggleModal}
         	backdrop="static"
         	keyboard={false}
+        	style={{color: 'rgba(44, 62, 80, 1)'}}
 			>
 				<Modal.Header closeButton>
 				{
@@ -54,19 +79,19 @@ class LoginRegister extends React.Component {
 					backgroundImage:`url(/plantborder7.jpeg)`,
 					backgroundRepeat: 'no-repeat',
 					backgroundSize: 'cover',
-					padding: '8%'
+					padding: '8%',
 				}}>
 					{
 						this.state.type === 'login'
 						?
-						<Form style={{color: 'black', fontSize: '1.4em'}}>
+						<Form style={{color: 'rgba(44, 62, 80, 1)', fontSize: '1.4em'}}>
 							<Form.Group controlId="login">
 								<Form.Label>Login</Form.Label>
-								<Form.Control size="lg" type="email" placeholder="Enter email or username" />
+								<Form.Control value={this.state.login} onChange={this.handleChange} size="lg" type="email" placeholder="Enter email or username" />
 							</Form.Group>
 							<Form.Group controlId="loginPassword">
 								<Form.Label>Password</Form.Label>
-								<Form.Control size="lg" type="password" placeholder="Enter password" />
+								<Form.Control value={this.state.loginPassword} onChange={this.handleChange} size="lg" type="password" placeholder="Enter password" />
 							</Form.Group>
 							<Button size="sm" variant="primary" type="submit">
 								Log in
@@ -76,19 +101,19 @@ class LoginRegister extends React.Component {
 						<Form style={{color: 'black', fontSize: '1.4em'}}>
 							<Form.Group controlId="registerEmail">
 								<Form.Label>Email</Form.Label>
-								<Form.Control size="lg" type="email" placeholder="Enter email" />
+								<Form.Control value={this.state.registerEmail} onChange={this.handleChange} size="lg" type="email" placeholder="Enter email" />
 							</Form.Group>
 							<Form.Group controlId="registerUsername">
 								<Form.Label>Username</Form.Label>
-								<Form.Control size="lg" type="email" placeholder="Enter username" />
+								<Form.Control value={this.state.registerUsername} onChange={this.handleChange} size="lg" type="email" placeholder="Enter username" />
 							</Form.Group>
 							<Form.Group controlId="registerPassword1">
 								<Form.Label>Password</Form.Label>
-								<Form.Control size="lg" type="password" placeholder="Create a password" />
+								<Form.Control value={this.state.registerPassword1} onChange={this.handleChange} size="lg" type="password" placeholder="Create a password" />
 							</Form.Group>
 							<Form.Group controlId="registerPassword2">
 								<Form.Label>Confirm Password</Form.Label>
-								<Form.Control size="lg" type="password" placeholder="Enter password again" />
+								<Form.Control value={this.state.registerPassword2} onChange={this.handleChange} size="lg" type="password" placeholder="Enter password again" />
 							</Form.Group>
 							<Button size="sm" variant="primary" type="submit">
 								Create Account

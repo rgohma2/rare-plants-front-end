@@ -22,7 +22,7 @@ const HoverText = styled.span`
   :hover {
     cursor: pointer;
     background-position: left bottom;
-    margin: .4%;
+    margin: .4%
   }
 `
 
@@ -109,12 +109,12 @@ class App extends React.Component {
                 color: 'rgba(44, 62, 80, 1)', 
                 background: 'transparent', 
                 width: '85%',
-                marginTop:'14.5%',
+                marginTop:'10.5%',
                 marginLeft: '2%'
               }}>
                 <h1 style={{fontSize:'4em'}}>All the Plants of Tommorrow <br/> Are the Seeds of Today</h1>
                 <p style={{fontSize: '2em'}}> Become a <HoverText style={{textDecoration: 'underline',}}> Green Thumb Planter Box 
-                <img style={{marginLeft: '0%', width: '5%', height: '5%'}} src='/arrow4.png'></img>
+                <img style={{marginLeft: '0%', width: '5%', height: '5%'}} src='/arrow4.png' alt='arrow-icon'></img>
                 </HoverText> 
                <br></br> member to start your journey. </p>
 

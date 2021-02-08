@@ -33,7 +33,8 @@ class LoginRegister extends React.Component {
 		registerUsername: "",
 		registerPassword1:"",
 		registerPassword2:"",
-		badSubmission: false
+		badSubmission: false,
+		badResponse: false
 	})
 
 	resetState = () => {
@@ -88,8 +89,14 @@ class LoginRegister extends React.Component {
 						badSubmission: false
 					})
 					this.props.loginRegister(this.state)
-					this.props.toggleModal()
-					this.resetState()
+					if (this.props.loggedIn === true) {
+						this.props.toggleModal()
+						this.resetState()
+					} else {
+						this.setState({
+							badResponse: true
+						})
+					}
 			} else {
 				this.setState({
 					badSubmission: true
@@ -99,8 +106,14 @@ class LoginRegister extends React.Component {
 			if (this.state.login !== "" && 
 				this.state.loginPassword !== "") {
 					this.props.loginRegister(this.state)
-					this.props.toggleModal()
-					this.resetState()
+					if (this.props.loggedIn === true) {
+						this.props.toggleModal()
+						this.resetState()
+					} else {
+						this.setState({
+							badResponse: true
+						})
+					}
 			} else {
 				this.setState({
 					badSubmission: true
@@ -151,6 +164,16 @@ class LoginRegister extends React.Component {
 							    	:
 							    	null
 							}
+							{
+									this.state.badResponse === true
+									?
+									<Form.Text style={{textAlign: 'center', color: 'red', backgroundColor: 'rgba(248,249,250,0.6)'}}>
+								    	{this.props.modalMessage}
+							    	</Form.Text>
+							    	:
+							    	null
+							}
+
 							<Form.Group controlId="login">
 								<Form.Label>Login</Form.Label>
 								<Form.Control value={this.state.login} onChange={this.handleChange} size="lg" type="text" placeholder="Enter email or username" />
@@ -170,6 +193,15 @@ class LoginRegister extends React.Component {
 									?
 									<Form.Text style={{textAlign: 'center', color: 'red', backgroundColor: 'rgba(248,249,250,0.6)'}}>
 								    	Please fill out all required fields.
+							    	</Form.Text>
+							    	:
+							    	null
+							}
+							{
+									this.state.badResponse === true
+									?
+									<Form.Text style={{textAlign: 'center', color: 'red', backgroundColor: 'rgba(248,249,250,0.6)'}}>
+								    	{this.props.modalMessage}
 							    	</Form.Text>
 							    	:
 							    	null

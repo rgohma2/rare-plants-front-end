@@ -33,7 +33,10 @@ class App extends React.Component {
     super()
 
     this.state = {
-      modalOpen: false
+      modalOpen: false,
+      loggedIn: false,
+      modalMessage: "",
+      user: ""
     }
   }
 
@@ -68,6 +71,19 @@ class App extends React.Component {
       const registerJSON = await response.json()
       console.log(registerJSON)
 
+      if (registerJSON.status !== 200) {
+        this.setState({
+          modalMessage: registerJSON.message
+        })
+      } else if (registerJSON.status === 200) {
+        this.setState({
+          modalMessage: "",
+          user: registerJSON.data,
+          loggedIn: true,
+          modalOpen: false
+        })
+      }
+
     } else if (type === 'login') {
       const loginInfo = {
         login: formData.login,
@@ -84,6 +100,19 @@ class App extends React.Component {
 
       const loginJSON = await response.json()
       console.log(loginJSON)
+
+      if (loginJSON.status !== 201) {
+        this.setState({
+          modalMessage: loginJSON.message
+        })
+      } else if (loginJSON.status === 201) {
+        this.setState({
+          modalMessage: "",
+          user: loginJSON.data,
+          loggedIn: true,
+          modalOpen: false
+        })
+      }
 
     }
   }
@@ -123,6 +152,8 @@ class App extends React.Component {
               <LoginRegister
               toggleModal={this.toggleModal}
               loginRegister={this.loginRegister}
+              modalMessage={this.state.modalMessage}
+              loggedIn={this.state.loggedIn}
               />
               :
               null

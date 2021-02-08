@@ -25,6 +25,8 @@ class LoginRegister extends React.Component {
 
 	getInitialState = () => ({
 		type: 'login',
+		validEmail: "",
+		passwordsMatch: "",
 		login:"",
 		loginPassword:"",
 		registerEmail: "",
@@ -49,6 +51,30 @@ class LoginRegister extends React.Component {
 		this.setState({
 			[e.target.id]: e.target.value
 		})
+		if (e.target.id === 'registerEmail') {
+			if (e.target.value.includes('@') && e.target.value.includes('.')) {
+				this.setState({
+					validEmail: true
+				})
+			} else {
+				this.setState({
+					validEmail: false
+				})
+			}
+		}
+
+		if (e.target.id === 'registerPassword2') {
+			if (e.target.value === this.state.registerPassword1) {
+				this.setState({
+					passwordsMatch: true
+				})
+			} else {
+				this.setState({
+					passwordsMatch: false
+				})
+			}
+		}
+
 	}
 
 	Component
@@ -102,6 +128,15 @@ class LoginRegister extends React.Component {
 							<Form.Group controlId="registerEmail">
 								<Form.Label>Email</Form.Label>
 								<Form.Control value={this.state.registerEmail} onChange={this.handleChange} size="lg" type="email" placeholder="Enter email" />
+								{
+									this.state.validEmail === false
+									?
+									<Form.Text style={{color: 'red', backgroundColor: 'rgba(248,249,250,0.6)'}}>
+								    	Please enter a valid email address.
+							    	</Form.Text>
+							    	:
+							    	null
+								}
 							</Form.Group>
 							<Form.Group controlId="registerUsername">
 								<Form.Label>Username</Form.Label>
@@ -114,6 +149,15 @@ class LoginRegister extends React.Component {
 							<Form.Group controlId="registerPassword2">
 								<Form.Label>Confirm Password</Form.Label>
 								<Form.Control value={this.state.registerPassword2} onChange={this.handleChange} size="lg" type="password" placeholder="Enter password again" />
+								{
+									this.state.passwordsMatch === false
+									?
+									<Form.Text style={{color: 'red', backgroundColor: 'rgba(248,249,250,0.6)'}}>
+								    	Passwords do not match.
+							    	</Form.Text>
+							    	:
+							    	null
+								}
 							</Form.Group>
 							<Button size="sm" variant="primary" type="submit">
 								Create Account

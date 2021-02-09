@@ -132,7 +132,10 @@ class LoginRegister extends React.Component {
 			onHide={this.props.toggleModal}
         	backdrop="static"
         	keyboard={false}
-        	style={{color: 'rgba(44, 62, 80, 1)'}}
+        	style={{
+        		color: 'rgba(44, 62, 80, 1)',
+        		fontFamily: 'Frank Ruhl Libre, serif',
+        	}}
 			>
 				<Modal.Header closeButton>
 				{
@@ -145,15 +148,15 @@ class LoginRegister extends React.Component {
 				}
 
 				</Modal.Header>
-				<Modal.Body style={{
-					backgroundImage:`url(/plantborder7.jpeg)`,
-					backgroundRepeat: 'no-repeat',
-					backgroundSize: 'cover',
-					padding: '8%'
-				}}>
-					{
-						this.state.type === 'login'
-						?
+				{
+					this.state.type === 'login'
+					?
+					<Modal.Body style={{
+						backgroundImage:`url(/plantbackground1.jpg)`,
+						backgroundRepeat: 'no-repeat',
+						backgroundSize: 'cover',
+						paddingBottom: '45.5%'
+					}}>
 						<Form onSubmit={this.handleSubmit} style={{color: 'rgba(44, 62, 80, 1)', fontSize: '1.4em'}}>
 							{
 									this.state.badSubmission === true
@@ -186,8 +189,14 @@ class LoginRegister extends React.Component {
 								Log in
 							</Button>
 						</Form>
-						:
-						<Form onSubmit={this.handleSubmit} style={{color: 'black', fontSize: '1.4em'}}>
+					</Modal.Body>
+					:
+					<Modal.Body style={{
+						backgroundImage:`url(/plantbackground1.jpg)`,
+						backgroundRepeat: 'no-repeat',
+						backgroundSize: 'cover'
+					}}>
+						<Form onSubmit={this.handleSubmit} style={{color: 'rgba(44, 62, 80, 1)', fontSize: '1.4em'}}>
 							{
 									this.state.badSubmission === true
 									?
@@ -243,9 +252,9 @@ class LoginRegister extends React.Component {
 							<Button size="sm" variant="primary" type="submit">
 								Create Account
 							</Button>
-						</Form>
+						</Form>			
+					</Modal.Body>
 					}
-				</Modal.Body>
 				<Modal.Footer style={{display:'flex', alignItems: 'center',
               justifyContent: 'center'}}>
               		{

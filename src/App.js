@@ -4,7 +4,6 @@ import styled from 'styled-components';
 
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
@@ -14,17 +13,27 @@ import Button from 'react-bootstrap/Button';
 import LoginRegister from './LoginRegister'
 
 const HoverText = styled.span`
-  color: rgba(44, 62, 80, 1);
-  background: linear-gradient(to right, rgba(203,113,138, 0.4) 50%, transparent 50%);
+  color: rgba(79, 43, 61, .8);
+  text-decoration: underline;
+  background: linear-gradient(to right, rgba(203,113,138, 0.5) 50%, transparent 50%);
   background-size: 200% 100%;
   background-position: right bottom;
   transition: all .3s ease-out;
   :hover {
     cursor: pointer;
     background-position: left bottom;
-    margin: .4%
   }
 `
+
+const NavHover = styled.span`
+  color: rgba(44, 62, 80, .7);
+  :hover {
+    cursor: pointer;
+    border-bottom: 2px solid rgba(79, 43, 61, .6);
+    color: rgba(44, 62, 80, 1)
+  }
+`
+
 
 
 class App extends React.Component {
@@ -120,28 +129,39 @@ class App extends React.Component {
   render(){
     return (
       <div>
-        <Navbar collapseOnSelect expand="lg" bg="light" className="justify-content-between navbar" sticky="top" style={{boxShadow:'0px 0px 7px 0px black', fontFamily: 'Poiret One, cursive', fontSize: '1.5em'}}>
-            <Navbar.Brand href="home" style={{fontSize: '1.75em', color: 'darkgreen'}}>
+
+        <Navbar collapseOnSelect expand="lg" bg="light" className="justify-content-between navbar" sticky="top" 
+        style={{
+          boxShadow:'0px 0px 7px 0px black', 
+          fontFamily: 'Frank Ruhl Libre, serif', 
+          fontSize: '1.2em'
+        }}>
+            <Navbar.Brand href="home" style={{fontSize: '1.75em', color: 'rgb(79, 43, 61)', fontFamily: 'Great Vibes, cursive'}}>
               Rare Plants
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link href="home">Home</Nav.Link>
-              <Nav.Link href="about_us">About Us</Nav.Link>
-              <NavDropdown title="Services" id="basic-nav-dropdown">
-                <NavDropdown.Item href="link_#1">link 1</NavDropdown.Item>
-                <NavDropdown.Item href="link_#2">link 2</NavDropdown.Item>
-                <NavDropdown.Item href="link_#3">link 3</NavDropdown.Item>
-                <NavDropdown.Item href="link_#4">link 4</NavDropdown.Item>
-              </NavDropdown>
+              <Nav.Link href="home"><NavHover>Home</NavHover></Nav.Link>
+              <Nav.Link href="about_us"><NavHover>About Us</NavHover></Nav.Link>
+              <Nav.Link href="seed_exchange"><NavHover>Seed Exchange</NavHover></Nav.Link>
+              <Nav.Link href="planter_box"><NavHover>Planter Box</NavHover></Nav.Link>
             </Nav>
+
               <Form inline>
-                <FormControl type="text" placeholder="Search" className="mr-sm-2"/>
+                <FormControl style={{color: 'rgba(44, 62, 80, .8)'}}type="text" placeholder="Search" className="mr-sm-2"/>
                 <Button variant="outline-success">Search</Button>
               </Form>
-            
-              <Nav.Link onClick={this.toggleModal} href="login" style={{marginLeft:'10px'}}>Login</Nav.Link>
+
+              <Nav.Link  style={{marginLeft:'10px', textAlign:'center'}}>
+              {
+                this.state.loggedIn === false
+                ?
+                <div onClick={this.toggleModal} href="login">Login</div>
+                :
+                <div style={{textAlign:'right'}}><img alt='profile' style={{height:'65%', width:'65%'}} src='profileicon.png'/></div>
+              }
+              </Nav.Link>
             
             </Navbar.Collapse>
           </Navbar>
@@ -160,11 +180,10 @@ class App extends React.Component {
             }
 
             <Container fluid style={{ 
-              height:'1800px', 
+              height:'730px',
+              width: '85%', 
               backgroundImage:`url(/plantborder7.jpeg)`,
               backgroundRepeat: 'no-repeat',
-              backgroundSize: 'cover',
-              textAlign: 'left',
               color: 'white',
               // background: 
               //   `repeating-radial-gradient(
@@ -172,40 +191,55 @@ class App extends React.Component {
               //     #FFEBCD,
               //     #DEB887 90px
               //   )`
-              fontFamily: 'Poiret One, cursive',
+              fontFamily: 'Frank Ruhl Libre, serif',
               display: 'flex',
               alignItems: 'start',
-              justifyContent: 'center'
+              justifyContent: 'center',
+              textAlign: 'right'
             }}>
 
               <Jumbotron style={{
-                fontFamily: 'Poiret One, cursive', 
+                fontFamily: 'Frank Ruhl Libre, serif',
                 color: 'rgba(44, 62, 80, 1)', 
-                background: 'transparent', 
-                width: '85%',
-                marginTop:'10.5%',
-                marginLeft: '2%'
+                background: 'transparent',
+                width: '100%',
+                marginTop: '0'
               }}>
-                <h1 style={{fontSize:'4em'}}>All the Plants of Tommorrow <br/> Are the Seeds of Today</h1>
-                <p style={{fontSize: '2em'}}> Become a <HoverText style={{textDecoration: 'underline',}}> Green Thumb Planter Box 
-                <img style={{marginLeft: '0%', width: '5%', height: '5%'}} src='/arrow4.png' alt='arrow-icon'></img>
-                </HoverText> 
-               <br></br> member to start your journey. </p>
+                <h1 style={{fontSize:'3.5em'}}>All the Plants of Tommorrow, <br/>Are the Seeds of Today.</h1>
+                <p style={{fontSize: '1.6em', color: 'rgba(79, 43, 61, .8)'}}> Become a <HoverText> Green Thumb Planter Box 
+                <img style={{marginLeft: '.5%', width: '2%', height: '2%'}} src='/arrowicon2.png' alt='arrow-icon'></img>
+                <br/></HoverText> 
+                member to start your journey. </p>
 
               </Jumbotron>
             </Container>
-                <Container style={{display:'flex', marginTop: '5%', fontSize: '1.5em', color: 'black'}}>
-                  <Container style={{backgroundColor: 'rgba(248,249,250,0.6)', padding: '15px', borderRadius: '20px', marginRight: '10px'}}>
-                    <p>The <span style={{textDecoration: 'underline', color:'darkgreen'}}>Rare Plants Seed Exchange</span> connects you to all kinds of unique seeds</p>
-                    <Button size='lg'>Seed Exchange</Button>
-                  </Container>
-                  <Container style={{backgroundColor: 'rgba(248,249,250,0.6)', padding: '15px', borderRadius: '20px', marginLeft: '10px'}}>
-                    <p>The <span style={{textDecoration: 'underline', color:'darkgreen'}}>Green Thumb Planter Box</span> is the easiest way to start growing your very own unique plants</p>
-                    <Button size='lg'>Learn More</Button>
-                  </Container>
-                </Container>
-            <Container style={{backgroundColor: 'rgb(248,249,250)', height: '760px'}}>
-            hello
+                
+            <Container fluid style={{
+              backgroundColor: 'rgba(79, 43, 61, .1)', 
+              height: '760px', 
+              fontFamily: 'Frank Ruhl Libre, serif',
+              color: 'rgba(44, 62, 80, 1)'
+            }}>
+              <h1 style={{fontSize: '3em', padding: '3% 0%'}}>Shop Seed Exchange By Category</h1>
+              <div style={{
+                display: 'flex', 
+                justifyContent: 'space-around' 
+              }}>
+                <div>
+                  <img className='category' alt='category' src='/succulents.jpg'/>
+                  <h1>Succulents<img style={{marginLeft: '1%', width: '8%', height: '8%'}} src='/arrowicon.png' alt='arrow-icon'></img></h1>
+                  <img style={{marginLeft: '.5%', width: '2%', height: '2%'}} src='/arrowicon2.png' alt='arrow-icon'></img>
+                </div>
+                <div>
+                  <img className='category' alt='category' src='/houseplants.jpg'/>
+                  <h1>House Plants<img style={{marginLeft: '1%', width: '8%', height: '8%'}} src='/arrowicon.png' alt='arrow-icon'></img></h1>
+                  <img style={{marginLeft: '.5%', width: '2%', height: '2%'}} src='/arrowicon2.png' alt='arrow-icon'></img>
+                </div>
+                <div>
+                  <img className='category' alt='category' src='/edibles.jpg'/>
+                  <h1>Edibles<img style={{marginLeft: '1%', width: '8%', height: '8%'}} src='/arrowicon.png' alt='arrow-icon'></img></h1>
+                </div>
+              </div>
             </Container>
           </div>
       </div>

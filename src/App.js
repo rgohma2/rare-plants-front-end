@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import styled from 'styled-components';
+import Carousel from "react-elastic-carousel";
 
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
@@ -33,8 +34,19 @@ const NavHover = styled.span`
     color: rgba(44, 62, 80, 1)
   }
 `
-
-
+const Hover = styled.span`
+  color: rgba(44, 62, 80, 1);
+  :hover {
+    cursor: pointer;
+    border-bottom: 2px solid rgba(79, 43, 61, 1);
+    color: rgba(44, 62, 80, 1)
+  }
+`
+const breakPoints = [
+  { width: 1, itemsToShow: 1 },
+  { width: 550, itemsToShow: 2, itemsToScroll: 2 },
+  { width: 768, itemsToShow: 3 }
+]
 
 class App extends React.Component {
   constructor() {
@@ -221,25 +233,57 @@ class App extends React.Component {
               color: 'rgba(44, 62, 80, 1)'
             }}>
               <h1 style={{fontSize: '3em', padding: '3% 0%'}}>Shop Seed Exchange By Category</h1>
-              <div style={{
-                display: 'flex', 
-                justifyContent: 'space-around' 
-              }}>
+
+              <Carousel className='carousel' breakPoints={breakPoints}>
                 <div>
                   <img className='category' alt='category' src='/succulents.jpg'/>
-                  <h1>Succulents<img style={{marginLeft: '1%', width: '8%', height: '8%'}} src='/arrowicon.png' alt='arrow-icon'></img></h1>
-                  <img style={{marginLeft: '.5%', width: '2%', height: '2%'}} src='/arrowicon2.png' alt='arrow-icon'></img>
+                    <h1><Hover>Succulents
+                    <img style={{marginLeft: '1%', width: '8%', height: '8%'}} src='/arrowicon.png' alt='arrow-icon'>
+                    </img></Hover></h1>
                 </div>
                 <div>
                   <img className='category' alt='category' src='/houseplants.jpg'/>
-                  <h1>House Plants<img style={{marginLeft: '1%', width: '8%', height: '8%'}} src='/arrowicon.png' alt='arrow-icon'></img></h1>
-                  <img style={{marginLeft: '.5%', width: '2%', height: '2%'}} src='/arrowicon2.png' alt='arrow-icon'></img>
+                  <h1><Hover>House Plants
+                  <img style={{marginLeft: '1%', width: '8%', height: '8%'}} src='/arrowicon.png' alt='arrow-icon'>
+                  </img></Hover></h1>
                 </div>
                 <div>
                   <img className='category' alt='category' src='/edibles.jpg'/>
-                  <h1>Edibles<img style={{marginLeft: '1%', width: '8%', height: '8%'}} src='/arrowicon.png' alt='arrow-icon'></img></h1>
+                  <h1><Hover>Edibles
+                  <img style={{marginLeft: '1%', width: '8%', height: '8%'}} src='/arrowicon.png' alt='arrow-icon'>
+                  </img></Hover></h1>
                 </div>
-              </div>
+                <div>
+                  <img className='category' alt='category' src='/edibles.jpg'/>
+                  <h1><Hover>Edibles
+                  <img style={{marginLeft: '1%', width: '8%', height: '8%'}} src='/arrowicon.png' alt='arrow-icon'>
+                  </img></Hover></h1>
+                </div>
+                <div>
+                  <img className='category' alt='category' src='/edibles.jpg'/>
+                  <h1><Hover>Edibles
+                  <img style={{marginLeft: '1%', width: '8%', height: '8%'}} src='/arrowicon.png' alt='arrow-icon'>
+                  </img></Hover></h1>
+                </div>
+                <div>
+                  <img className='category' alt='category' src='/edibles.jpg'/>
+                  <h1><Hover>Edibles
+                  <img style={{marginLeft: '1%', width: '8%', height: '8%'}} src='/arrowicon.png' alt='arrow-icon'>
+                  </img></Hover></h1>
+                </div>
+                <div>
+                  <img className='category' alt='category' src='/edibles.jpg'/>
+                  <h1><Hover>Edibles
+                  <img style={{marginLeft: '1%', width: '8%', height: '8%'}} src='/arrowicon.png' alt='arrow-icon'>
+                  </img></Hover></h1>
+                </div>
+                <div>
+                  <img className='category' alt='category' src='/edibles.jpg'/>
+                  <h1><Hover>Edibles
+                  <img style={{marginLeft: '1%', width: '8%', height: '8%'}} src='/arrowicon.png' alt='arrow-icon'>
+                  </img></Hover></h1>
+                </div>
+              </Carousel>
             </Container>
           </div>
       </div>

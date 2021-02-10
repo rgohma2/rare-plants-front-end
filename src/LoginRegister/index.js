@@ -7,7 +7,6 @@ import Button from 'react-bootstrap/Button'
 
 
 const HoverText = styled.span`
-  color: #000;
   text-decoration: underline;
   :hover {
     color: darkgreen;

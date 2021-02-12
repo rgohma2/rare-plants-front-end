@@ -67,7 +67,7 @@ class App extends React.Component {
 
     this.state = {
       modalOpen: false,
-      loggedIn: true,
+      loggedIn: false,
       modalMessage: "",
       user: ""
     }
@@ -80,6 +80,22 @@ class App extends React.Component {
     this.setState({
       modalOpen: this.state.modalOpen === false ? true : false
     })
+  }
+
+  logout = async () => {
+    const url = process.env.REACT_APP_API_URL + '/api/v1/users/logout'
+     const response = await fetch(url, {
+          credentials: 'include',
+          method: 'GET'
+      })
+
+     console.log(response.status)
+     if (response.status === 200) {
+      this.setState({
+        loggedIn: false,
+        user:""
+      })
+     }
   }
 
   loginRegister = async (formData) => {
@@ -208,7 +224,7 @@ class App extends React.Component {
                   <Dropdown.Item href="#/action-1"><DropHover>Profile</DropHover></Dropdown.Item>
                   <Dropdown.Item href="#/action-2"><DropHover>Make New Listing</DropHover></Dropdown.Item>
                   <Dropdown.Item href="#/action-3"><DropHover>Settings</DropHover></Dropdown.Item>
-                  <Dropdown.Item href="#/action-4"><DropHover>Log Out</DropHover></Dropdown.Item>
+                  <Dropdown.Item onClick={this.logout} href="#/action-4"><DropHover>Log Out</DropHover></Dropdown.Item>
                 </Dropdown.Menu>
                 </Dropdown>
               }

@@ -13,6 +13,7 @@ import Button from 'react-bootstrap/Button';
 import Dropdown from 'react-bootstrap/Dropdown'
 
 import LoginRegister from './LoginRegister'
+import NewPostModal from './NewPostModal'
 
 const HoverText = styled.span`
   color: rgba(79, 43, 61, .8);
@@ -67,6 +68,7 @@ class App extends React.Component {
 
     this.state = {
       modalOpen: false,
+      postModalOpen: false,
       loggedIn: false,
       modalMessage: "",
       user: ""
@@ -81,6 +83,16 @@ class App extends React.Component {
       modalOpen: this.state.modalOpen === false ? true : false
     })
   }
+
+  togglePostModal = (e) => {
+    if (e !== undefined) {
+      e.preventDefault()  
+    }
+    this.setState({
+      postModalOpen: this.state.postModalOpen === false ? true : false
+    })
+  }
+
 
   logout = async () => {
     const url = process.env.REACT_APP_API_URL + '/api/v1/users/logout'
@@ -222,7 +234,7 @@ class App extends React.Component {
                 className='dropdown-menu'
                 >
                   <Dropdown.Item href="#/action-1"><DropHover>Profile</DropHover></Dropdown.Item>
-                  <Dropdown.Item href="#/action-2"><DropHover>Make New Listing</DropHover></Dropdown.Item>
+                  <Dropdown.Item onClick={this.togglePostModal} href="#/action-2"><DropHover>Make New Listing</DropHover></Dropdown.Item>
                   <Dropdown.Item href="#/action-3"><DropHover>Settings</DropHover></Dropdown.Item>
                   <Dropdown.Item onClick={this.logout} href="#/action-4"><DropHover>Log Out</DropHover></Dropdown.Item>
                 </Dropdown.Menu>
@@ -241,6 +253,15 @@ class App extends React.Component {
               loginRegister={this.loginRegister}
               modalMessage={this.state.modalMessage}
               loggedIn={this.state.loggedIn}
+              />
+              :
+              null
+            }
+            {
+              this.state.postModalOpen
+              ?
+              <NewPostModal
+              togglePostModal={this.togglePostModal}
               />
               :
               null

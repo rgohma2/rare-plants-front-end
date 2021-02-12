@@ -10,18 +10,19 @@ import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
 import Jumbotron from 'react-bootstrap/Jumbotron'
 import Button from 'react-bootstrap/Button';
+import Dropdown from 'react-bootstrap/Dropdown'
 
 import LoginRegister from './LoginRegister'
 
 const HoverText = styled.span`
   color: rgba(79, 43, 61, .8);
-  text-decoration: underline;
   background: linear-gradient(to right, rgba(203,113,138, 0.5) 50%, transparent 50%);
   background-size: 200% 100%;
   background-position: right bottom;
   transition: all .3s ease-out;
   :hover {
     cursor: pointer;
+    text-decoration: underline;
     background-position: left bottom;
   }
 `
@@ -34,11 +35,22 @@ const NavHover = styled.span`
     color: rgba(44, 62, 80, 1)
   }
 `
+const DropHover = styled.span`
+  color: rgba(44, 62, 80, .9);
+  :hover {
+    cursor: pointer;
+    border-bottom: 2px solid rgba(79, 43, 61, .6);
+    color: rgba(44, 62, 80, .9)
+  }
+`
+
+
+
 const Hover = styled.span`
   color: rgba(44, 62, 80, 1);
   :hover {
     cursor: pointer;
-    border-bottom: 2px solid rgba(79, 43, 61, 1);
+    border-bottom: 2px solid rgba(79, 43, 61, .8);
     color: rgba(44, 62, 80, 1)
   }
 `
@@ -55,7 +67,7 @@ class App extends React.Component {
 
     this.state = {
       modalOpen: false,
-      loggedIn: false,
+      loggedIn: true,
       modalMessage: "",
       user: ""
     }
@@ -165,13 +177,40 @@ class App extends React.Component {
                 <Button variant="outline-success">Search</Button>
               </Form>
 
-              <Nav.Link  style={{marginLeft:'10px', textAlign:'center'}}>
+              <Nav.Link  style={{marginLeft:'10px', textAlign:'right'}}>
               {
                 this.state.loggedIn === false
                 ?
                 <div onClick={this.toggleModal} href="login">Login</div>
                 :
-                <div style={{textAlign:'right'}}><img alt='profile' style={{height:'65%', width:'65%'}} src='profileicon.png'/></div>
+                <Dropdown
+                drop='left'
+                style={{
+                  textAlign: 'right'
+                }}
+                >
+                  <Dropdown.Toggle
+                  style={{
+                    backgroundColor: 'transparent',
+                    border: '0px',
+                    color: 'rgb(3,122,251)',
+                    textAlign: 'right',
+                    margin: '0px',
+                    padding: '0px',
+                    outline: 'none',
+                    boxShadow: 'none',
+                    borderColor: 'transparent'
+                  }}
+                  ><img alt='profile' style={{height:'65%', width:'65%'}} src='profileicon.png'/></Dropdown.Toggle>
+                <Dropdown.Menu
+                className='dropdown-menu'
+                >
+                  <Dropdown.Item href="#/action-1"><DropHover>Profile</DropHover></Dropdown.Item>
+                  <Dropdown.Item href="#/action-2"><DropHover>Make New Listing</DropHover></Dropdown.Item>
+                  <Dropdown.Item href="#/action-3"><DropHover>Settings</DropHover></Dropdown.Item>
+                  <Dropdown.Item href="#/action-4"><DropHover>Log Out</DropHover></Dropdown.Item>
+                </Dropdown.Menu>
+                </Dropdown>
               }
               </Nav.Link>
             
@@ -232,7 +271,7 @@ class App extends React.Component {
               fontFamily: 'Frank Ruhl Libre, serif',
               color: 'rgba(44, 62, 80, 1)'
             }}>
-              <h1 style={{fontSize: '3em', padding: '3% 0%'}}>Shop Seed Exchange By Category</h1>
+              <h1 style={{fontSize: '3em', padding: '3% 0%', color: 'rgba(79, 43, 61, 1)'}}>Shop Seed Exchange By Category</h1>
 
               <Carousel className='carousel' breakPoints={breakPoints}>
                 <div>
@@ -242,14 +281,26 @@ class App extends React.Component {
                     </img></Hover></h1>
                 </div>
                 <div>
-                  <img className='category' alt='category' src='/houseplants.jpg'/>
+                  <img className='category' alt='category' src='/houseplants3.jpg'/>
                   <h1><Hover>House Plants
                   <img style={{marginLeft: '1%', width: '8%', height: '8%'}} src='/arrowicon.png' alt='arrow-icon'>
                   </img></Hover></h1>
                 </div>
                 <div>
-                  <img className='category' alt='category' src='/edibles.jpg'/>
-                  <h1><Hover>Edibles
+                  <img className='category' alt='category' src='/flowers.jpg'/>
+                  <h1><Hover>Flowers
+                  <img style={{marginLeft: '1%', width: '8%', height: '8%'}} src='/arrowicon.png' alt='arrow-icon'>
+                  </img></Hover></h1>
+                </div>
+                <div>
+                  <img className='category' alt='category' src='/perennials.jpg'/>
+                  <h1><Hover>Perennials
+                  <img style={{marginLeft: '1%', width: '8%', height: '8%'}} src='/arrowicon.png' alt='arrow-icon'>
+                  </img></Hover></h1>
+                </div>
+                <div>
+                  <img className='category' alt='category' src='/bonsai.jpg'/>
+                  <h1><Hover>Bonsai
                   <img style={{marginLeft: '1%', width: '8%', height: '8%'}} src='/arrowicon.png' alt='arrow-icon'>
                   </img></Hover></h1>
                 </div>
@@ -260,26 +311,8 @@ class App extends React.Component {
                   </img></Hover></h1>
                 </div>
                 <div>
-                  <img className='category' alt='category' src='/edibles.jpg'/>
-                  <h1><Hover>Edibles
-                  <img style={{marginLeft: '1%', width: '8%', height: '8%'}} src='/arrowicon.png' alt='arrow-icon'>
-                  </img></Hover></h1>
-                </div>
-                <div>
-                  <img className='category' alt='category' src='/edibles.jpg'/>
-                  <h1><Hover>Edibles
-                  <img style={{marginLeft: '1%', width: '8%', height: '8%'}} src='/arrowicon.png' alt='arrow-icon'>
-                  </img></Hover></h1>
-                </div>
-                <div>
-                  <img className='category' alt='category' src='/edibles.jpg'/>
-                  <h1><Hover>Edibles
-                  <img style={{marginLeft: '1%', width: '8%', height: '8%'}} src='/arrowicon.png' alt='arrow-icon'>
-                  </img></Hover></h1>
-                </div>
-                <div>
-                  <img className='category' alt='category' src='/edibles.jpg'/>
-                  <h1><Hover>Edibles
+                  <img className='category' alt='category' src='/herbs.jpg'/>
+                  <h1><Hover>Herbs
                   <img style={{marginLeft: '1%', width: '8%', height: '8%'}} src='/arrowicon.png' alt='arrow-icon'>
                   </img></Hover></h1>
                 </div>

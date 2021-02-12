@@ -59,6 +59,23 @@
 	background-color: rgba(203,113,138, 0.4);
 }
 
+.dropdown-menu .link:hover {
+	background-color: transparent; 
+}
+
+.text-link {
+	color: rgb(79, 43, 61);
+}
+
+.text-link:hover {
+    text-decoration: none;
+    color: rgb(79, 43, 61);
+}
+
+.link:hover {
+	text-decoration: none;
+}
+
 
 
 

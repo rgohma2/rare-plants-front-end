@@ -76,6 +76,46 @@
 	text-decoration: none;
 }
 
+.tab-nav {
+	margin-top: 1%;
+	font-size: 1em;
+}
+
+.tabs {
+	color: rgba(44, 62, 80, .5);
+	margin: 0px;
+	border: 1px solid rgba(44, 62, 80, .5);
+	border-bottom: 1px solid rgba(44, 62, 80, 1);
+	border-radius: 20% 20% 0% 0%;
+	background-color: rgba(79, 43, 61, .1);
+
+}
+
+.tabs:hover {
+	color: rgba(44, 62, 80, 1);
+}
+
+.active {
+	color: blue;
+	border: 1px solid rgba(44, 62, 80, 1);
+	background-color: rgb(246,246,248);
+	border-top: none;
+}
+
+.active-item {
+	background-color: rgb(246,246,248);
+	color: rgba(44, 62, 80, 1);
+	border: 1px solid rgba(44, 62, 80, 1);
+	border-bottom: 1px solid rgba(79, 43, 61, .1);	
+}
+
+.active-item:hover {
+	border: 1px solid rgba(44, 62, 80, 1);	
+	border-bottom: 1px solid rgba(79, 43, 61, .1);
+}
+
+
+
 
 
 

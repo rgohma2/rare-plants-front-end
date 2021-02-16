@@ -51,7 +51,7 @@ const DropHover = styled.span`
     cursor: pointer;
     border-bottom: 2px solid rgba(79, 43, 61, .6);
     color: rgba(44, 62, 80, .9);
-    
+
   }
 `
 
@@ -101,6 +101,9 @@ class App extends React.Component {
           credentials: 'include',
           method: 'GET'
       })
+
+    const logoutJSON = await response.json()
+    console.log(logoutJSON);
 
      console.log(response.status)
      if (response.status === 200) {
@@ -179,6 +182,20 @@ class App extends React.Component {
     }
   }
 
+  createNewPost = async (newPostData) => {
+    const url = process.env.REACT_APP_API_URL + '/api/v1/posts/' + this.state.user.id
+    const response = await fetch(url, {
+          credentials: 'include',
+          method: 'POST',
+          body: JSON.stringify(newPostData),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+      })
+    const newPostJSON = await response.json()
+    console.log(newPostJSON);
+  }
+
   render(){
     return (
       <div>
@@ -235,7 +252,6 @@ class App extends React.Component {
                   className='dropdown-menu'
                   >
                     <Dropdown.Item href="#/action-1"><Link className='link' to='/profile'><DropHover>Profile</DropHover></Link></Dropdown.Item>
-                    <Dropdown.Item onClick={this.togglePostModal} href="#/action-2"><DropHover>Add New Listing</DropHover></Dropdown.Item>
                     <Dropdown.Item href="#/action-3"><DropHover>Settings</DropHover></Dropdown.Item>
                     <Dropdown.Item onClick={this.logout} href="#/action-4"><DropHover>Log Out</DropHover></Dropdown.Item>
                   </Dropdown.Menu>
@@ -351,7 +367,9 @@ class App extends React.Component {
                 </Container>
               </Route>
               <Route path='/profile'>
-                <ProfileContainer/>
+                <ProfileContainer
+                createNewPost={this.createNewPost}
+                />
               </Route>
             </Switch>
           </div>

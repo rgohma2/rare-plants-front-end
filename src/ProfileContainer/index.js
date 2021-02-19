@@ -4,6 +4,7 @@ import Tab from 'react-bootstrap/Tab';
 import Nav from 'react-bootstrap/Nav'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import Card from 'react-bootstrap/Card'
 
 class ProfileContainer extends React.Component {
 	constructor(props) {
@@ -26,6 +27,10 @@ class ProfileContainer extends React.Component {
 		this.setState({
 			activeItem: e.target.name
 		})
+
+		if (e.target.name === 'listings'){
+			this.props.getCurrentUserPosts()
+		}
 	}
 
 	handleChange = (e) => {
@@ -56,10 +61,10 @@ class ProfileContainer extends React.Component {
 				        	<Nav.Link className={`tabs ${this.state.activeItem === "favorites" ? 'active-item' : '' }`} onClick={this.toggleItem} name="favorites" eventKey="favorites">Favorites</Nav.Link>
 				        </Nav.Item>
 				        <Nav.Item>
-				        	<Nav.Link className={`tabs ${this.state.activeItem === "listings" ? 'active-item' : '' }`} onClick={this.toggleItem} name="listings" eventKey="listings">Listings</Nav.Link>
+				        	<Nav.Link className={`tabs ${this.state.activeItem === "listings" ? 'active-item' : '' }`} onClick={this.toggleItem} name="listings" eventKey="listings">My Listings</Nav.Link>
 				        </Nav.Item>
 				        <Nav.Item>
-				        	<Nav.Link className={`tabs ${this.state.activeItem === "exchange" ? 'active-item' : '' }`} onClick={this.toggleItem} name="exchange" eventKey="exchange">Exchange</Nav.Link>
+				        	<Nav.Link className={`tabs ${this.state.activeItem === "exchange" ? 'active-item' : '' }`} onClick={this.toggleItem} name="exchange" eventKey="exchange">My Exchange</Nav.Link>
 				        </Nav.Item>
 				        <Nav.Item>
 				        	<Nav.Link className={`tabs ${this.state.activeItem === "new_listing" ? 'active-item' : '' }`} onClick={this.toggleItem} name="new_listing" eventKey="new_listing">Post New Listing</Nav.Link>
@@ -71,6 +76,20 @@ class ProfileContainer extends React.Component {
 				    	</Tab.Pane>
 				    	<Tab.Pane eventKey="listings">
 				    		All listings
+				    		{this.props.currentUserPosts.reverse().map(post =>{
+				    			return(
+				    				<Card key={post.id}>
+				    					<Card.Img variant="top" src={post.image} />
+				    					<Card.Body>
+				    						<Card.Text>
+										      {
+										      	post.title	
+										      }
+										    </Card.Text>
+				    					</Card.Body>
+				    				</Card>
+				    			)
+				    		})}
 				    	</Tab.Pane>
 				    	<Tab.Pane eventKey="exchange">
 				    		exchange listings

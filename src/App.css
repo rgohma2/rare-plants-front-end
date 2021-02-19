@@ -114,6 +114,19 @@
 	border-bottom: 1px solid rgba(79, 43, 61, .1);
 }
 
+.bubble-bottom-left:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-right: 24px solid rgba(246,246,248, .4);
+  border-left: 12px solid transparent;
+  border-top: 12px solid rgba(246,246,248, .4);
+  border-bottom: 20px solid transparent;
+  right: 85px;
+  bottom: -32px;
+}
+
 
 
 

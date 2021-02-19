@@ -81,7 +81,8 @@ class App extends React.Component {
       postModalOpen: false,
       loggedIn: false,
       modalMessage: "",
-      user: ""
+      user: "",
+      currentUserPosts: []
     }
   }
 
@@ -196,6 +197,22 @@ class App extends React.Component {
     console.log(newPostJSON);
   }
 
+  getCurrentUserPosts = async () => {
+    const url = process.env.REACT_APP_API_URL + '/api/v1/posts/' + this.state.user.id
+    const response = await fetch(url, {
+      credentials: 'include'
+    })
+    const postsJSON = await response.json()
+    console.log(postsJSON);
+
+    if (postsJSON.status === 200) {
+      this.setState({
+        currentUserPosts: postsJSON.data
+      })
+    }
+  }
+
+
   render(){
     return (
       <div>
@@ -303,20 +320,56 @@ class App extends React.Component {
                     width: '100%',
                     marginTop: '0'
                   }}>
-                    <h1 style={{fontSize:'3.5em'}}>All the Plants of Tommorrow, <br/>Are the Seeds of Today.</h1>
-                    <p style={{fontSize: '1.6em', color: 'rgba(79, 43, 61, .8)'}}> Become a <HoverText> Green Thumb Planter Box 
+                    <h1 style={{fontSize:'3.8vw'}}>All the Plants of Tommorrow, <br/>Are the Seeds of Today.</h1>
+                    <p style={{fontSize: '1.6vw', color: 'rgba(79, 43, 61, .8)'}}> Become a <HoverText> Green Thumb Planter Box 
                     <img style={{marginLeft: '.5%', width: '2%', height: '2%'}} src='/arrowicon2.png' alt='arrow-icon'></img>
                     <br/></HoverText> 
                     member to start your journey. </p>
 
                   </Jumbotron>
                 </Container>
-                    
                 <Container fluid style={{
-                  backgroundColor: 'rgba(79, 43, 61, .1)', 
+                  backgroundColor: 'white',
+                  height: '600px',
+                  fontFamily: 'Frank Ruhl Libre, serif',
+                  display: 'flex',
+                  justifyContent: 'space-around',
+                  margin: '4% 0'
+                }}>
+                  <div style={{
+                    backgroundImage: `url('/woodpannel2.jpeg')`,
+                    width: '46%',
+                    height: '100%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center'
+                  }}>
+                    <div className='bubble-bottom-left' style={{
+                      backgroundColor: 'rgba(246,246,248, .4)',
+                      borderRadius: '15%',
+                      position: 'relative',
+                      width: '85%',
+                      fontSize: '2.5vw',
+                      textAlign: 'center'
+                    }}>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi elementum arcu velit, eget eleifend magna finibus sed. Duis dui erat, tempus vel efficitur et, fringilla vel nunc. Sed accumsan lorem eu nunc lacinia sodales. 
+                    
+                    </div>
+                  </div>
+                  <div style={{
+                    backgroundColor: 'rgb(246,246,248)',
+                    width: '46%',
+                    height: '100%'
+                  }}>
+                  </div>
+                </Container> 
+
+                <Container fluid style={{
+                  backgroundColor: 'rgb(246,246,248)', 
                   height: '760px', 
                   fontFamily: 'Frank Ruhl Libre, serif',
-                  color: 'rgba(44, 62, 80, 1)'
+                  color: 'rgba(44, 62, 80, 1)',
+                  marginTop: '4%'
                 }}>
                   <h1 style={{fontSize: '3em', padding: '3% 0%', color: 'rgba(79, 43, 61, 1)'}}>Shop Seed Exchange By Category</h1>
 
@@ -369,6 +422,8 @@ class App extends React.Component {
               <Route path='/profile'>
                 <ProfileContainer
                 createNewPost={this.createNewPost}
+                getCurrentUserPosts={this.getCurrentUserPosts}
+                currentUserPosts={this.state.currentUserPosts}
                 />
               </Route>
             </Switch>

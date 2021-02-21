@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import styled from 'styled-components';
-import Carousel from "react-elastic-carousel";
+import Carousel from 'react-elastic-carousel';
 
 import {
   BrowserRouter as Router,
@@ -19,10 +19,8 @@ import Jumbotron from 'react-bootstrap/Jumbotron'
 import Button from 'react-bootstrap/Button';
 import Dropdown from 'react-bootstrap/Dropdown'
 
-import LoginRegister from './LoginRegister'
-import ProfileContainer from './ProfileContainer'
-
-
+import LoginRegister from './LoginRegister';
+import ProfileContainer from './ProfileContainer';
 
 const HoverText = styled.span`
   color: rgba(79, 43, 61, .8);

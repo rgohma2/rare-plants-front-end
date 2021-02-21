@@ -1,4 +1,5 @@
 import React from 'react'
+import ImageUploader from '../ImageUploader'
 
 import Tab from 'react-bootstrap/Tab';
 import Nav from 'react-bootstrap/Nav'
@@ -17,10 +18,11 @@ class ProfileContainer extends React.Component {
 			title: "",
 			seed_count: "",
 			price: "",
-			image: "",
-			description: ""
+			description: "",
+			image: ""
 		}
 	}
+
 
 	toggleItem = (e) => {
 		console.log(e.target.name)
@@ -34,15 +36,24 @@ class ProfileContainer extends React.Component {
 	}
 
 	handleChange = (e) => {
+		console.log(e.target);
 		this.setState({
 			[e.target.id]: e.target.value
 		})
 	}
 
+	getUploadUrl = (url) => {
+		console.log('success!');
+		console.log(url);
+		this.setState({
+			image: url
+		})
+	}
+
 	handleSubmit = (e) => {
 		e.preventDefault()
-		console.log(this.state)
-		this.props.createNewPost(this.state)
+		console.log(this.state.image);
+		// this.props.createNewPost(this.state)
 	}
 
 
@@ -95,6 +106,9 @@ class ProfileContainer extends React.Component {
 				    		exchange listings
 				    	</Tab.Pane>
 				    	<Tab.Pane eventKey="new_listing">
+				    		<ImageUploader
+				    		getUploadUrl={this.getUploadUrl}
+				    		/>
 				    		<Form onSubmit={this.handleSubmit}>
 				    		  <Form.Group controlId="category">
 							    <Form.Label>Which category are these seeds?</Form.Label>
@@ -120,9 +134,8 @@ class ProfileContainer extends React.Component {
 							  	<Form.Label>What is the price of one order?</Form.Label>
 							  	<Form.Control onChange={this.handleChange} value={this.state.price} type='text'/>
 							  </Form.Group>
-							  <Form.Group controlId="image">
+							  <Form.Group>
 							  	<Form.Label>Choose an example picture of the plant.</Form.Label>
-							    <Form.File onChange={this.handleChange} value={this.state.image} id="image"/>
 							  </Form.Group>
 							  <Form.Group controlId="description">
 							  	<Form.Label>Enter any information about the order/seeds that you would like.</Form.Label>
@@ -140,13 +153,5 @@ class ProfileContainer extends React.Component {
 	}
 }
 
-/*
-title = CharField()
-price = CharField()
-seed_count = CharField()
-image = CharField()
-category = CharField()
-description = CharField()
-*/
 
 export default ProfileContainer

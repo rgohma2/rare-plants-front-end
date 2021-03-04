@@ -26,6 +26,7 @@ const HoverText = styled.span`
   color: rgba(79, 43, 61, .8);
   background: linear-gradient(to right, rgba(203,113,138, 0.5) 50%, transparent 50%);
   background-size: 200% 100%;
+  text-decoration: underline;
   background-position: right bottom;
   transition: all .3s ease-out;
   :hover {
@@ -213,7 +214,7 @@ class App extends React.Component {
 
   render(){
     return (
-      <div>
+      <div style={{backgroundColor: 'rgba(79, 43, 61, .2)'}}>
         <Router>
           <Navbar collapseOnSelect expand="lg" bg="light" className="justify-content-between navbar" sticky="top" 
           style={{
@@ -276,7 +277,7 @@ class App extends React.Component {
               
               </Navbar.Collapse>
             </Navbar>
-          <div>
+          <div style={{backgroundColor:'rgba(79, 43, 61, .2)'}}>
             {
               this.state.modalOpen
               ?
@@ -293,7 +294,7 @@ class App extends React.Component {
             <Switch>
               <Route exact path='/'>
                 <Container fluid style={{ 
-                  height:'730px',
+                  height:'740px',
                   width: '85%', 
                   backgroundImage:`url(/plantborder7.jpeg)`,
                   backgroundRepeat: 'no-repeat',
@@ -308,7 +309,8 @@ class App extends React.Component {
                   display: 'flex',
                   alignItems: 'start',
                   justifyContent: 'center',
-                  textAlign: 'right'
+                  textAlign: 'right',
+                  // boxShadow: '0 0 5px gray'
                 }}>
 
                   <Jumbotron style={{
@@ -318,58 +320,65 @@ class App extends React.Component {
                     width: '100%',
                     marginTop: '0'
                   }}>
-                    <h1 style={{fontSize:'3.8vw'}}>All the Plants of Tommorrow, <br/>Are the Seeds of Today.</h1>
-                    <p style={{fontSize: '1.6vw', color: 'rgba(79, 43, 61, .8)'}}> Become a <HoverText> Green Thumb Planter Box 
-                    <img style={{marginLeft: '.5%', width: '2%', height: '2%'}} src='/arrowicon2.png' alt='arrow-icon'></img>
-                    <br/></HoverText> 
-                    member to start your journey. </p>
-
+                    <div style={{marginRight: '0'}}>
+                      <h1 style={{fontSize:'3.9vw'}}>All the Plants of Tommorrow, <br/>Are the Seeds of Today.</h1>
+                      <p style={{fontSize: '1.6vw', color: 'rgba(79, 43, 61, .8)'}}> Become a <HoverText> Green Thumb Planter Box 
+                      <img style={{marginLeft: '.5%', width: '2%', height: '2%'}} src='/arrowicon2.png' alt='arrow-icon'></img>
+                      <br/></HoverText> 
+                      member to start your journey. </p>
+                    </div>
                   </Jumbotron>
                 </Container>
                 <Container fluid style={{
-                  backgroundColor: 'white',
-                  height: '600px',
-                  fontFamily: 'Frank Ruhl Libre, serif',
-                  display: 'flex',
-                  justifyContent: 'space-around',
-                  margin: '4% 0'
+                  height: '400px',
+                  backgroundColor: 'rgb(247,247,247)',
+                  boxShadow: '0 0 1px gray'
                 }}>
-                  <div style={{
-                    backgroundImage: `url('/woodpannel2.jpeg')`,
-                    width: '46%',
-                    height: '100%',
+                </Container>
+                <div style={{display: 'flex'}}>
+                  <Container fluid style={{
+                    // backgroundColor: 'rgba(112,141,110, 1)',
+                    backgroundImage: `url('/plantbackground8.png')`,
+                    // backgroundSize: '60.7%',
+                    backgroundSize: '103.5%',
+                    backgroundRepeat: 'no-repeat',
+                    // border: '5px solid rgb(144,198,149)',
+                    height: '270px',
+                    fontFamily: 'Frank Ruhl Libre, serif',
                     display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center'
+                    fontSize: '3em',
+                    margin: '0 auto',
+                    marginBottom: '3%',
+                    // marginTop: '3%',
                   }}>
-                    <div className='bubble-bottom-left' style={{
-                      backgroundColor: 'rgba(246,246,248, .4)',
-                      borderRadius: '15%',
-                      position: 'relative',
-                      width: '85%',
-                      fontSize: '2.5vw',
-                      textAlign: 'center'
-                    }}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi elementum arcu velit, eget eleifend magna finibus sed. Duis dui erat, tempus vel efficitur et, fringilla vel nunc. Sed accumsan lorem eu nunc lacinia sodales. 
-                    
-                    </div>
-                  </div>
-                  <div style={{
-                    backgroundColor: 'rgb(246,246,248)',
-                    width: '46%',
-                    height: '100%'
-                  }}>
-                  </div>
-                </Container> 
-
+                      
+                  </Container>
+                  <Container fluid style={{
+                    // backgroundColor: 'rgba(112,141,110, 1)',
+                    backgroundImage: `url('/plantbackground8.png')`,
+                    backgroundSize: '103.5%',
+                    backgroundRepeat: 'no-repeat',
+                    // border: '5px solid rgb(144,198,149)',
+                    height: '270px',
+                    fontFamily: 'Frank Ruhl Libre, serif',
+                    display: 'flex',
+                    fontSize: '3em',
+                    margin: '0 auto',
+                    marginBottom: '3%',
+                    transform: `scaleX(-1)`,
+                    // marginTop: '3%',
+                  }}> 
+                  </Container>
+                </div>
                 <Container fluid style={{
-                  backgroundColor: 'rgb(246,246,248)', 
+                  backgroundColor: 'whitesmoke', 
                   height: '760px', 
                   fontFamily: 'Frank Ruhl Libre, serif',
                   color: 'rgba(44, 62, 80, 1)',
-                  marginTop: '4%'
+                  width: '95%',
+                  boxShadow: '0 0 5px gray'
                 }}>
-                  <h1 style={{fontSize: '3em', padding: '3% 0%', color: 'rgba(79, 43, 61, 1)'}}>Shop Seed Exchange By Category</h1>
+                  <h1 style={{fontSize: '3em', padding: '3% 0%'}}>Shop Seed Exchange By Category</h1>
 
                   <Carousel className='carousel' breakPoints={breakPoints}>
                     <div>

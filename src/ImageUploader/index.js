@@ -34,7 +34,12 @@ function ImageUploader(props) {
         <input type="file" onChange={handleChange} />
         <button disabled={!file}>upload image</button>
       </form>
-      <img src={url} alt="" />
+      <img style={{
+      	height:'30%',
+      	width: '25%'
+      }} 
+      src={url} 
+      alt="" />
     </div>
   );
 }

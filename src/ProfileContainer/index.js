@@ -4,11 +4,7 @@ import ImageUploader from '../ImageUploader'
 import Tab from 'react-bootstrap/Tab';
 import Nav from 'react-bootstrap/Nav'
 import Form from 'react-bootstrap/Form'
-import Container from 'react-bootstrap/Container'
-import Col from 'react-bootstrap/Col'
-import Row from 'react-bootstrap/Row'
 import Button from 'react-bootstrap/Button'
-import Card from 'react-bootstrap/Card'
 // import CardColumns from 'react-bootstrap/CardColumns'
 
 
@@ -64,11 +60,11 @@ class ProfileContainer extends React.Component {
 	render() {
 		return(
 			<Tab.Container>
-			<div style={{height: '900px', display: 'flex'}}>
-				<div style={{width: '30%', backgroundColor:'whitesmoke', height:'80%', margin: '1% 0 0 2.5%', display: 'flex'}}>
+			<div style={{height: '1800px', display:'flex'}}>
+				<div style={{width: '30%', backgroundColor:'whitesmoke', height:'40%', margin: '1% 0 0 2.5%', display: 'flex', position: 'sticky', top: '5rem'}}>
 					<div style={{height:'94%', width:'90%', border: '2px solid gray', alignSelf: 'center', margin: '0 auto'}}> 
-						<div style={{height: '40%', backgroundColor: 'rgba(140,176,190, .7)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
-							<div style={{backgroundColor: '#000', height: '38.4%', width: '30%', borderRadius: '100%', alignSelf:'center', marginTop: '15%'}}>	
+						<div style={{height: '40%', backgroundColor: 'rgba(140,176,190, .7)', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end'}}>
+							<div style={{backgroundColor: '#000', height: '38.4%', width: '30%', borderRadius: '100%', alignSelf:'center',}}>	
 							</div>
 							<div style={{backgroundColor: 'transparent', width:'100%', display:'flex', justifyContent: 'center'}}>
 								<img className="profile-icon-bar" src='/alarm-bell.png' alt='favorites'></img>
@@ -97,32 +93,22 @@ class ProfileContainer extends React.Component {
 				    		favorites
 				    	</Tab.Pane>
 				    	<Tab.Pane eventKey="listings" style={{border: 'none'}}>
-				    		<Container>
-				    			<Row>
+				    		<ul class="grid cs-style-3">
 					    		{this.props.currentUserPosts.reverse().map(post =>{
 					    			return(
-					    				<Col xs="4">
-						    				<Card style={{
-						    					height: '100%'
-						    				}} key={post.id}>
-						    					<Card.Img
-						    					 style={{
-											      	height:'70%'
-											     }}
-						    					 variant="top" src={post.image} />
-						    					<Card.Body>
-												      {
-						    							<Card.Text>
-												      		{post.title}
-												    	</Card.Text>	
-												      }
-						    					</Card.Body>
-						    				</Card>
-						    			</Col>	
+					    				<li key={post.id}>
+						    				<figure>
+						    					<img src={post.image} alt={post.title}/>
+						    					<figcaption>
+						    						<h3>{post.title}</h3>
+						    						<span>Randy Gohmann</span>
+						    						<a href="#">View Listing</a>
+						    					</figcaption>
+						    				</figure>
+						    			</li>
 					    			)
 					    		})}
-					    		</Row>
-				    		</Container>
+				    		</ul>
 				    	</Tab.Pane>
 				    	<Tab.Pane eventKey="exchange">
 				    		exchange listings

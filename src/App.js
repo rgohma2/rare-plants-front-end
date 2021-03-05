@@ -61,7 +61,6 @@ const Hover = styled.span`
   :hover {
     cursor: pointer;
     border-bottom: 2px solid rgba(79, 43, 61, .8);
-    color: rgba(44, 62, 80, 1)
   }
 `
 const breakPoints = [
@@ -263,7 +262,7 @@ class App extends React.Component {
                       boxShadow: 'none',
                       borderColor: 'transparent'
                     }}
-                    ><img alt='profile' style={{height:'65%', width:'65%'}} src='profileicon.png'/></Dropdown.Toggle>
+                    ><img alt='profile' className={"profile"} src='profileicon.png'/></Dropdown.Toggle>
                   <Dropdown.Menu
                   className='dropdown-menu'
                   >
@@ -332,7 +331,7 @@ class App extends React.Component {
                 <Container fluid style={{
                   height: '400px',
                   backgroundColor: 'rgb(247,247,247)',
-                  boxShadow: '0 0 1px gray'
+                  boxShadow: '0 0 3px gray'
                 }}>
                 </Container>
                 <div style={{display: 'flex'}}>
